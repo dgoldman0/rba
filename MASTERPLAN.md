@@ -17,4 +17,4 @@ The following is the master plan for the entire project ecosystem that I am buil
 11. Use the same streaming contracts to launch the hospitality product service
 12. Implement Beyond Automation Hospitality paradigm
 13. Start Guild Association
-14. Continue to implement other foundations.
+14. Continue to implement other foundations, including ones for safety, entertainment or 'living' hard to decide what to call it
