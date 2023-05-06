@@ -1,5 +1,7 @@
 # Overall Database Structure
 
+The following is a draft of the overall database structure (MySQL) for the automated AI based restaurant management system. A lot still needs to be worked out and there are many components that are still likely missing and much that needs to be reworked. 
+
 ## General Tables
 
 **users**
@@ -38,15 +40,6 @@
 - category_name (VARCHAR)
 - description (TEXT)
 - parent_category_id (INT, FK, nullable)
-
-**inventory**
-- inventory_id (PK, INT, AUTO_INCREMENT)
-- product_id (INT, FK)
-- location_id (INT, FK)
-- quantity (INT)
-- reorder_level (INT)
-- created_at (DATETIME)
-- updated_at (DATETIME)
 
 **locations**
 - location_id (PK, INT, AUTO_INCREMENT)
@@ -126,55 +119,54 @@
 
 ## Kitchen
 
-ingredients
+**ingredients**
+- ingredient_id (PK, INT, AUTO_INCREMENT)
+- ingredient_name (VARCHAR)
+- ingredient_description (TEXT)
+- unit_of_measure (VARCHAR)
 
-ingredient_id (PK, INT, AUTO_INCREMENT)
-ingredient_name (VARCHAR)
-ingredient_description (TEXT)
-unit_of_measure (VARCHAR)
-recipes
+**recipes**
+- recipe_id (PK, INT, AUTO_INCREMENT)
+- product_id (INT, FK)
+- recipe_name (VARCHAR)
+- recipe_description (TEXT)
+- prep_time (TIME)
+- cook_time (TIME)
+- total_time (TIME)
+- yield (INT)
 
-recipe_id (PK, INT, AUTO_INCREMENT)
-product_id (INT, FK)
-recipe_name (VARCHAR)
-recipe_description (TEXT)
-prep_time (TIME)
-cook_time (TIME)
-total_time (TIME)
-yield (INT)
-recipe_steps
+**recipe_steps**
+- step_id (PK, INT, AUTO_INCREMENT)
+- recipe_id (INT, FK)
+- step_number (INT)
+- step_description (TEXT)
+- duration (TIME)
 
-step_id (PK, INT, AUTO_INCREMENT)
-recipe_id (INT, FK)
-step_number (INT)
-step_description (TEXT)
-duration (TIME)
-recipe_ingredients
+**recipe_ingredients**
+- recipe_ingredient_id (PK, INT, AUTO_INCREMENT)
+- recipe_id (INT, FK)
+- ingredient_id (INT, FK)
+- quantity (DECIMAL)
 
-recipe_ingredient_id (PK, INT, AUTO_INCREMENT)
-recipe_id (INT, FK)
-ingredient_id (INT, FK)
-quantity (DECIMAL)
-ingredient_inventory
-
-kitchen_order_id (PK, INT, AUTO_INCREMENT)
-sale_id (INT, FK)
-product_id (INT, FK)
-quantity (INT)
-order_status (ENUM: 'queued', 'preparing', 'ready', 'served', 'cancelled')
-created_at (DATETIME)
-updated_at (DATETIME)
+**ingredient_inventory**
+- kitchen_order_id (PK, INT, AUTO_INCREMENT)
+- sale_id (INT, FK)
+- product_id (INT, FK)
+- quantity (INT)
+- order_status (ENUM: 'queued', 'preparing', 'ready', 'served', 'cancelled')
+- created_at (DATETIME)
+- updated_at (DATETIME)
 
 ## inventory
 
-ingredient_inventory_id (PK, INT, AUTO_INCREMENT)
-ingredient_id (INT, FK)
-location_id (INT, FK)
-quantity (DECIMAL)
-reorder_level (DECIMAL)
-created_at (DATETIME)
-updated_at (DATETIME)
-kitchen_orders
+**inventory**
+- inventory_id (PK, INT, AUTO_INCREMENT)
+- product_id (INT, FK)
+- location_id (INT, FK)
+- quantity (INT)
+- reorder_level (INT)
+- created_at (DATETIME)
+- updated_at (DATETIME)
 
 **purchase_orders**
 - purchase_order_id (PK, INT, AUTO_INCREMENT)
