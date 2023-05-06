@@ -14,3 +14,5 @@ The following is the master plan for the entire project ecosystem that I am buil
 8. Launch Hospitality Foundation and Hospitality Coin
 9. Use the same streaming contracts to launch the hospitality product service
 10. Implement Beyond Automation Hospitality paradigm
+11. Start Guild Association
+12. Continue to implement other foundations.
