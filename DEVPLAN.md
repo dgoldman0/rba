@@ -1,4 +1,4 @@
-# Guide to Start the Restaurant System API Development Process
+# Guide to Start the Restaurant System Backend Development Process
 
 This guide provides a step-by-step process for creating a RESTful API for the AI-based restaurant management system using Flask and SQLAlchemy. We will also handle automating processes like updating inventory as kitchen orders are prepared, and submitting purchase orders when inventory is low.
 
